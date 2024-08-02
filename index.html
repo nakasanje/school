@@ -1,20 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="$FLUTTER_BASE_HREF">
+  <base href="/school/">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -31,14 +18,12 @@
 
   <title>school_project</title>
   <link rel="manifest" href="manifest.json">
-  <script>
-    // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = "{{flutter_service_worker_version}}";
 
+  <script>
+    var serviceWorkerVersion = ""3062099419"";
   </script>
-  <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
-  <style id = "splash-screen-style">
+  <style id="splash-screen-style">
     html {
       height: 100%
     }
@@ -96,33 +81,43 @@
       right: 0;
     }
   </style>
+  <script id="splash-screen-script">
+    function removeSplashFromWeb() {
+      document.getElementById("splash")?.remove();
+      document.getElementById("splash-branding")?.remove();
+      document.body.style.background = "transparent";
+    }
+  </script>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-
 </head>
 <body>
   <picture id="splash">
-    <source srcset="splash/img/light-1x.jpeg 1x, splash/img/light-1x.jpeg 2x, splash/img/light-1x.jpeg 3x, splash/img/light-1x.jpeg 4x" media="(prefers-color-scheme: light)">
-    <source srcset="splash/img/dark-1x.jpeg 1x, splash/img/dark-1x.jpeg 2x, splash/img/dark-1x.jpeg 3x, splash/img/dark-1x.jpeg 4x" media="(prefers-color-scheme: dark)">
-    <img class="center" aria-hidden="true" src="splash/img/light-1x.jpeg" alt="">
-</picture>
-<script>
-  window.addEventListener('load', function(ev) {
-    // Download main.dart.js
-    _flutter.loader.load({
-      serviceWorker: {
-        serviceWorkerVersion: serviceWorkerVersion,
-      },
-    }).then(function (engineInitializer) {
-      return engineInitializer.initializeEngine({
-        hostElement: document.querySelector("#flutter_app"),
-        renderer: "html"
-      }).then(function (appRunner) {
-        return appRunner.runApp();
+      <source srcset="splash/img/light-1x.png 1x, splash/img/light-2x.png 2x, splash/img/light-3x.png 3x, splash/img/light-4x.png 4x" media="(prefers-color-scheme: light)">
+      <source srcset="splash/img/dark-1x.png 1x, splash/img/dark-2x.png 2x, splash/img/dark-3x.png 3x, splash/img/dark-4x.png 4x" media="(prefers-color-scheme: dark)">
+      <img class="center" aria-hidden="true" src="splash/img/light-1x.png" alt="">
+  </picture>
+  <script>
+  
+    window.addEventListener('load', function(ev) {
+      _flutter.loader.load({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+      }).then(function (engineInitializer) {
+        return engineInitializer.initializeEngine({
+          hostElement: document.querySelector("#flutter_app"),
+          renderer: "html"
+        }).then(function (appRunner) {
+          return appRunner.runApp();
+        });
       });
     });
-  });
-    
-</script>
-
-
-</body></html>
+  </script>
+  <script>
+    window.flutterWebUseSkia = true;
+  </script>
+</head>
+<body>
+  <div id="flutter_app"></div>
+</body>
+</html>
